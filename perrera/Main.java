@@ -6,7 +6,7 @@ public class Main{
         Scanner teclado=new Scanner(System.in);
         Perro perro=new Perro("", "", "", 0, 0, "");
         String[] razasPeligrosas=new String[]{"Pit bull terrier","American Staffordshire terrier","Tosa Inu","Dogo argentino","Dogo guatemalteco","Fila Brasileño","Presa canario","Dóberman","Gran perro japonés","Mastín napolitano","Presa Mallorqui","Dogo de burdeos","Bullmastiff","Bull terrier inglés","Bulldog americano","Rhodesiano","Rottweiler"};
-        Razas raza=new Razas("");
+        
         //Declaracion de variables familia
         String apellido,banderaFamilia;
         int miembros,kids,kidsMenores;
@@ -79,13 +79,35 @@ public class Main{
                     }else if(familias[i].getGrupo()==3){
                         System.out.println("La familia "+familias[i].getApellido()+", es apta para adoptar cualquier tipo de perro ");
             }else if(respuesta==4){
-
+                int[] grupos=new int[3];
+                int grupoPerro=0;
+                
+                for(int j=0;j<grupos.length;j++){
+                    grupos[j]=familias[j].getGrupo();
+                    System.out.println(grupos[j]);
+                }
+                //Ver a que tipo de grupo corresponden los perritos
+                if(perro.getPeligroso()&&perro.getSize().equalsIgnoreCase("grande")){
+                    grupoPerro=3;
+                }else if(perro.getPeligroso()==false&&(perro.getSize().equalsIgnoreCase("mediano")||perro.getSize().equalsIgnoreCase("grande"))){
+                    grupoPerro=2;
+                }else if(perro.getPeligroso()==false&&perro.getSize().equalsIgnoreCase("pequeño")){
+                    grupoPerro=1;
+                }
+                System.out.println(grupoPerro);
+                for(int k=0;k<grupos.length;k++){
+                    if(grupos[k]==grupoPerro){
+                        System.out.println("Felicidades, ha sido adoptado por la familia: "+familias[k]);
+                        break;
+                    }
+                }
+                
             }else if(respuesta==5){
-                System.out.println("Feliz dia ;) ");
+                System.out.println("Feliz dia ;)");
             }else{
                 System.out.println("Ingresa una opcion correcta");
             }
 
         }
     }
-}
+}}}
