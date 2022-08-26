@@ -42,7 +42,7 @@ public class Main{
             respuesta=teclado.nextInt();
             if(respuesta==1){
                 System.out.println("INGRESAR PERRO ");
-                String nombre,raza,size,color;
+                String nombre,raza,size="mediano",color;
                 int edad,estado;
                 System.out.println("Ingresa el nombre ");
                 nombre=teclado.next();
@@ -87,6 +87,8 @@ public class Main{
                     System.out.println(grupos[j]);
                 }
                 //Ver a que tipo de grupo corresponden los perritos
+                //Banderas
+                boolean bandera1=false,bandera2=false,bandera3=false;
                 if(perro.getPeligroso()&&perro.getSize().equalsIgnoreCase("grande")){
                     grupoPerro=3;
                 }else if(perro.getPeligroso()==false&&(perro.getSize().equalsIgnoreCase("mediano")||perro.getSize().equalsIgnoreCase("grande"))){
@@ -94,12 +96,13 @@ public class Main{
                 }else if(perro.getPeligroso()==false&&perro.getSize().equalsIgnoreCase("pequeño")){
                     grupoPerro=1;
                 }
+                int posicion=0;
                 System.out.println(grupoPerro);
                 for(int k=0;k<grupos.length;k++){
                     if(grupos[k]==grupoPerro){
-                        System.out.println("Felicidades, ha sido adoptado por la familia: "+familias[k]);
-                        break;
+                        posicion=k;
                     }
+                System.out.println("Ha sido adoptado por la familia: "+familias[posicion]);
                 }
                 
             }else if(respuesta==5){
